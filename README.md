@@ -10,6 +10,10 @@
     Next Generation Integration Toolkit Powered by MeseOTech.
 </p>
 
+<p align="Center">
+
+</p>
+
 <p align="center">
     <a href="https://www.meseotech.org/join-us/meseo-public-team" style="text-decoration: underline; font-weight: bold;">Join Us Public Team!</a>
 </p>
@@ -55,6 +59,16 @@
     <img src="https://img.shields.io/badge/Language-Electron-lightcyan" alt="Electron"/>
 <div>
 
+<br>
+
+<div align="center">
+    <strong>UI Design</strong>
+    <br/>
+    <strong>MeseOTech Design Group + Naive UI</strong>
+<div>
+
+<br>
+
 <div align="center">
     <strong>
         OpenSource License
@@ -94,7 +108,15 @@
 > ```
 
 <br/>
-<br/>
+
+**Contributing**
+> Before starting to contribute, You need join our [Public Team](https://www.meseotech.org/join-us/meseo-public-team)  or submit resume to [MeseOTech Co.](https://www.meseotech.org/jobs) to get the permission to contribute.
+
+**Sponsor Us ❤️‍🔥**
+> [Sponsor Us!](https://www.meseotech.org/sponsor-us/sunstrider-project) and **30% of this money will be donated to developers**, and the remaining 70% will be used as **charity**!
+>
+> At present, Sponsors have **initiated 63 donations** to us, and we have received a total of **$2237** and donated **$1565.9** to UNICEF org.
+
 <br/>
 
 <h2 align="center" style="font-size: 18px;">
