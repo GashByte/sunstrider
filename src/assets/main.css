@@ -6,27 +6,32 @@
   --scrollbar-color-hover: #969aff;
   --separator-line-color: #C6C6C6;
   --font-color: #000000;
+  --team-member-card-color: #e3e3e5; 
+  --sponsor-card-color: #FF3BA3;
 }
 
-html[class="Dark"] {
+html[data-theme="Dark"] {
   --background-color: #1e1e1e;
   --scrollbar-color: #1D1C2E;
   --scrollbar-color-hover: #1C1B39;
   --separator-line-color: #393939;
   --font-color: #ffffff;
+  --team-member-card-color: #161618A0; 
+  --sponsor-card-color: #FF3BA3;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100%;
-  width: 100%;
 }
 
 body,
-html {
-  color: var(--font-color);
+html{
+  background: var(--background-color);
+  height: 100%;
+  width: 100%;
+  color: var(--font-color) !important;
   font-family: "Poppins", sans-serif !important;
 }
 

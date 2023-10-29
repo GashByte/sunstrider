@@ -21,6 +21,11 @@ database.updateData({
     )["value"] + 1,
 });
 
+const colorMode = (await Database.getValue({item: DatabaseValueEnum.persSunstriderColorMode}))["value"];
+if(colorMode) {
+  document.querySelector('html')?.setAttribute('data-theme', colorMode);
+}
+
 const app = createApp(App);
 
 app.use(createPinia());

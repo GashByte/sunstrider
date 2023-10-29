@@ -10,4 +10,9 @@ import MainApp from "./views/MainApp.vue";
 </template>
 
 <style scoped>
+.notification-provider {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+}
 </style>

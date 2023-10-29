@@ -4,6 +4,7 @@ export enum DatabaseValueEnum {
   useSunstriderBeforeUsePrepareInit = "user_sunstrider_before_use_prepare_init",
 
   persSunstriderNavigationBarStyle = "pers_sunstrider_navigation_bar_style",
+  persSunstriderColorMode = 'pers_sunstrider_color_mode',
 }
 
 export enum DatabaseDefaultValueEnum {
@@ -12,6 +13,7 @@ export enum DatabaseDefaultValueEnum {
   useSunstriderBeforeUsePrepareInit = "false",
 
   persSunstriderNavigationBarStyle = "Top",
+  persSunstriderColorMode = 'Dark'
 }
 
 export enum DatabaseUserEnum {
@@ -22,6 +24,7 @@ export enum DatabaseUserEnum {
 
 export enum DatabasePersEnum {
   persSunstriderNavigationBarStyle = "pers_sunstrider_navigation_bar_style",
+  persSunstriderColorMode = 'pers_sunstrider_color_mode',
 }
 
 export enum DatabaseCloudEnum {}

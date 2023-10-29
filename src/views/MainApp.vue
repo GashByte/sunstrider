@@ -62,6 +62,7 @@ submit a report after the inspection is completed.`,
 
 <style scoped>
 .main-app {
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -72,7 +73,7 @@ submit a report after the inspection is completed.`,
 
 header {
   background: var(--background-color);
-  position: sticky;
+  position: sticky !important;
   top: 0;
   width: 100%;
   height: 5vh;
