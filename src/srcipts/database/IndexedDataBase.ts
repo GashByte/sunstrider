@@ -40,13 +40,6 @@ export class IndexedDatabase {
     this.indexedDatabase = window.indexedDB;
   }
 
-  /**
-   * To open the default indexeddatabase or create a new database for the diversification
-   * @param DatabaseName indexeddatabase name
-   * @param DatabaseStoreName indexeddatabase store name
-   * @param DatabaseVersion indexeddatabase version
-   * @returns return the indexeddatabase or undefined
-   */
   private openDatabase(
     DatabaseName: string = this.DatabaseName,
     DatabaseVersion: number = this.DatabaseVersion,
@@ -65,7 +58,7 @@ export class IndexedDatabase {
           reject(e);
         });
     }).catch((error) => {
-      console.error(error); // <important!> error error must in front of console.error
+      console.error(error);
     });
   }
 
@@ -240,7 +233,7 @@ export class IndexedDatabase {
         };
       }
     }).catch((error) => {
-      console.error(error); // <important!> error error must in front of console.error
+      console.error(error);
     });
   };
 

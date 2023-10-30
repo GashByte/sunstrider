@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 :root {
   --background-color: #ffffff;
   --scrollbar-color: #b1b5ff;
   --scrollbar-color-hover: #969aff;
-  --separator-line-color: #C6C6C6;
+  --separator-line-color: #c6c6c6;
   --font-color: #000000;
-  --team-member-card-color: #e3e3e5; 
-  --sponsor-card-color: #FF3BA3;
+  --team-member-card-color: #e3e3e5;
+  --sponsor-card-color: #ff3ba3;
 }
 
 html[data-theme="Dark"] {
   --background-color: #1e1e1e;
-  --scrollbar-color: #1D1C2E;
-  --scrollbar-color-hover: #1C1B39;
+  --scrollbar-color: #1d1c2e;
+  --scrollbar-color-hover: #1c1b39;
   --separator-line-color: #393939;
   --font-color: #ffffff;
-  --team-member-card-color: #161618A0; 
-  --sponsor-card-color: #FF3BA3;
+  --team-member-card-color: #161618a0;
+  --sponsor-card-color: #ff3ba3;
 }
 
 * {
@@ -27,7 +27,7 @@ html[data-theme="Dark"] {
 }
 
 body,
-html{
+html {
   background: var(--background-color);
   height: 100%;
   width: 100%;
@@ -50,7 +50,7 @@ html{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9F9F9F;
+  background: #9f9f9f;
 }
 
 ::-webkit-scrollbar-track {
