@@ -30,6 +30,12 @@
 </p>
 
 <p align="center">
+    <strong>Get Started Preview (10-30-2023)</strong>
+</p>
+
+![Preview](./public/preview.png)
+
+<p align="center">
     <h2>Features</h2>
 </p>
 
