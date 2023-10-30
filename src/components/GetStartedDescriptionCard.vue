@@ -53,13 +53,13 @@ export default {
 .description-card {
     flex: 0 0 calc(33.3% - 15px);
     width: 300px;
-    height: 130px;
+    height: 150px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    padding: 20px;
-    margin-top: 15px;
+    padding: 15px;
+    margin-top: 10px;
     border-radius: 15px;
     transition: 0.55s;
 }

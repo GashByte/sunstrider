@@ -15,7 +15,7 @@ const anchorClickEvent = (e: any) => {
     });
 }
 
-const color = ref(document.querySelector('html')?.classList.contains('Light') ? '#000000' : '#FFFFFF');
+const color = ref(document.querySelector('html')?.getAttribute('data-theme') === 'Light' ? '#000000' : '#FFFFFF');
 
 const githubAnchorClickEvent = () => {
     if (EnvironmentAnalyst.DevelopmentEnvironment()) {

@@ -52,15 +52,20 @@ submit a report after the inspection is completed.`,
 <template>
   <div class="main-app">
     <header>
-      <GetStartedHeader v-if="!before_use_init"/>
+      <GetStartedHeader class="get-started-header" v-if="!before_use_init"/>
     </header>
     <main>
-      <GetStarted v-if="!before_use_init"/>
+      <GetStarted class="get-started-container" v-if="!before_use_init"/>
     </main>
   </div>
 </template>
 
 <style scoped>
+main {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
 .main-app {
   overflow: hidden;
   display: flex;
@@ -73,7 +78,8 @@ submit a report after the inspection is completed.`,
 
 header {
   background: var(--background-color);
-  position: sticky !important;
+  z-index: 999;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 5vh;
@@ -83,6 +89,7 @@ header {
 }
 
 main {
+  margin-top: 5vh;
   background: var(--background-color);
   width: 100%;
   height: 100%;
