@@ -5,8 +5,10 @@ import { Database } from "@/srcipts/database/DataBase";
 import { useNotification, NAvatar } from "naive-ui";
 import { DatabaseValueEnum } from "@/srcipts/database/DatabaseValueEnum";
 
-import GetStarted from "./GetStarted.vue";
-import GetStartedHeader from "../components/header/GetStartedHeader.vue";
+// import GetStarted from "./GetStarted.vue";
+// import GetStartedHeader from "../components/header/GetStartedHeader.vue";
+
+import BeforeUseView from "./BeforeUseView.vue";
 
 const database = Database.getDatabase();
 
@@ -18,7 +20,10 @@ export default {
   name: "MainApp",
   mounted() {
     const notification = useNotification();
-    if (!EnvironmentAnalyst.UserAccessStatus()) {
+    if (
+      !EnvironmentAnalyst.UserAccessStatus() &&
+      !EnvironmentAnalyst.DevelopmentEnvironment()
+    ) {
       notification.create({
         title: "Offline-mode",
         description: "From MeseOTech Co. Ltd., Sunstrider Project Team",
@@ -35,7 +40,7 @@ submit a report after the inspection is completed.`,
             round: true,
             src: "/SunstriderLogo-no-text.png",
           }),
-        duration: 5000,
+        duration: 3000,
       });
     }
   },
@@ -45,8 +50,9 @@ submit a report after the inspection is completed.`,
     };
   },
   components: {
-    GetStartedHeader,
-    GetStarted,
+    // GetStartedHeader,
+    // GetStarted,
+    BeforeUseView,
   },
 };
 </script>
@@ -54,15 +60,20 @@ submit a report after the inspection is completed.`,
 <template>
   <div class="main-app">
     <header>
-      <GetStartedHeader class="get-started-header" v-if="!before_use_init" />
+      <!--<GetStartedHeader v-if="!before_use_init" />-->
     </header>
     <main>
-      <GetStarted class="get-started-container" v-if="!before_use_init" />
+      <!--<GetStarted v-if="!before_use_init" />-->
+      <BeforeUseView
+        v-if="!before_use_init"
+        style="overflow: hidden !important"
+      />
     </main>
   </div>
 </template>
 
 <style scoped>
+/*
 main {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
@@ -91,9 +102,8 @@ header {
 }
 
 main {
-  margin-top: 5vh;
   background: var(--background-color);
   width: 100%;
   height: 100%;
-}
+}*/
 </style>

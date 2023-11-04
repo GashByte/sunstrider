@@ -10,6 +10,8 @@ export default {
   methods: {
     cardClickEvent(event: any) {
       const target = event.target as HTMLElement;
+      if (target.classList) {
+      }
     },
   },
 };
