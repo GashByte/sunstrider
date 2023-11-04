@@ -34,6 +34,12 @@ export default {
       ".scroll-item",
     ) as NodeListOf<HTMLElement>;
 
+    const remain = 3; // seconds
+    let timer = 0;
+    const isScrollEnd = ref(false);
+    const isScrollTop = ref(false);
+    const canScrollNext = ref(true);
+
     this.$nextTick(() => {
       scrollWarpper.style.height = `${window.innerHeight}px`;
       warpperList.forEach((item) => {
@@ -43,20 +49,21 @@ export default {
       warpperList[0].classList.add("scroll-active");
       warpperList[1].classList.add("scroll-next");
       page.value = 0;
-    });
 
-    const remain = 1; // seconds
-    let timer = 0;
-    const isScrollEnd = ref(false);
-    const isScrollTop = ref(false);
-    const canSrollNext = ref(true);
+      canScrollNext.value = false;
+      setTimeout(() => {
+        scrollWarpper.removeChild(document.querySelector('.full-screen-tip') as Node);
+        
+        canScrollNext.value = true;
+      }, 3500);
+    });
 
     document.addEventListener("wheel", (event: any) => {
       if (event.deltaY > 0) {
         if (page.value === warpperList.length - 1) return;
-        if (!canSrollNext.value) return;
+        if (!canScrollNext.value) return;
 
-        canSrollNext.value = false;
+        canScrollNext.value = false;
 
         page.value++;
         warpperList.forEach((item) => {
@@ -84,15 +91,14 @@ export default {
         afterScrollChanged();
 
         setTimeout(() => {
-          scrollWarpper.style.transform = `translateY(-${
-            page.value * window.innerHeight
-          }px)`;
-        }, 1000);
+          scrollWarpper.style.transform = `translateY(-${page.value * window.innerHeight
+            }px)`;
+        }, 600);
       } else if (event.deltaY < 0) {
         if (page.value === 0) return;
-        if (!canSrollNext.value) return;
+        if (!canScrollNext.value) return;
 
-        canSrollNext.value = false;
+        canScrollNext.value = false;
 
         page.value--;
         warpperList.forEach((item) => {
@@ -120,14 +126,13 @@ export default {
         afterScrollChanged();
 
         setTimeout(() => {
-          scrollWarpper.style.transform = `translateY(-${
-            page.value * window.innerHeight
-          }px)`;
+          scrollWarpper.style.transform = `translateY(-${page.value * window.innerHeight
+            }px)`;
         }, 1000);
       }
 
       setTimeout(() => {
-        canSrollNext.value = true;
+        canScrollNext.value = true;
       }, remain * 1000);
     });
 
@@ -155,18 +160,22 @@ export default {
       setTimeout(() => {
         for (let i = 0; i < all_blocks.length; i++) {
           setTimeout(() => {
-            all_blocks[i].style.transform = `translateY(${
-              all_blocks[i].classList.contains("riseup-block")
-                ? "100%"
-                : "-100%"
-            })`;
-          }, i * 100);
+            all_blocks[i].style.transform = `translateY(${all_blocks[i].classList.contains("riseup-block")
+              ? "100%"
+              : "-100%"
+              })`;
+
+            // split little blocks
+            if (all_blocks[i].classList.contains('riseup-block')) {
+
+            }
+          }, i * 200);
         }
       }, 1000);
     }
   },
   method: {
-    abbbb(e: any) {},
+    abbbb(e: any) { },
   },
 };
 </script>
@@ -181,6 +190,7 @@ export default {
     <div class="before-use-content-container">
       <main>
         <div class="scroll-changed-masker" style="overflow: hidden !important">
+          <div id="splitSquaresContainer"></div>
           <div class="riseup-block" style="transform: translateY(-100%)"></div>
           <div class="falldown-block" style="transform: translateY(100%)"></div>
           <div class="riseup-block" style="transform: translateY(-100%)"></div>
@@ -191,6 +201,37 @@ export default {
         </div>
         <div class="before-use-page">
           <div class="scroll-warpper">
+            <div class="full-screen-tip">
+              <svg class="arrow-top-left" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358" fill="none"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs />
+                <path id="arrow"
+                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
+                  fill-rule="evenodd" fill="#000000" />
+              </svg>
+              <svg class="arrow-top-right" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358"
+                fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs />
+                <path id="arrow"
+                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
+                  fill-rule="evenodd" fill="#000000" />
+              </svg>
+              <svg class="arrow-bottom-left" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358"
+                fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs />
+                <path id="arrow"
+                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
+                  fill-rule="evenodd" fill="#000000" />
+              </svg>
+              <svg class="arrow-bottom-right" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358"
+                fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs />
+                <path id="arrow"
+                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
+                  fill-rule="evenodd" fill="#000000" />
+              </svg>
+              <h1>全屏观看, 享受更好的体验</h1>
+            </div>
             <IndexView class="scroll-item" id="Index-View" />
             <FutureView class="scroll-item" id="Future-View" />
             <MeetTeamView class="scroll-item" id="MeetTeam-View" />
@@ -204,6 +245,65 @@ export default {
 </template>
 
 <style scoped>
+.full-screen-tip {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  animation: fadeOut 3s ease-in-out 0s 1 normal forwards;
+}
+
+.full-screen-tip h1 {
+  font-size: 5.5vh;
+  color: #e5e5e5A0;
+}
+
+.arrow-top-right {
+  position: absolute;
+  right: 125px;
+  top: 125px;
+}
+
+.arrow-bottom-left {
+  position: absolute;
+  transform: rotate(-180deg);
+  bottom: 125px;
+  left: 125px;
+}
+
+.arrow-top-left {
+  position: absolute;
+  transform: rotate(-90deg);
+  top: 125px;
+  left: 125px;
+}
+
+.arrow-bottom-right {
+  position: absolute;
+  transform: rotate(90deg);
+  bottom: 125px;
+  right: 125px;
+}
+
+@keyframes fadeOut {
+  15%{
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .falldown-block {
   transition: 0.45s;
   height: 100%;
@@ -225,7 +325,7 @@ export default {
   pointer-events: none;
   height: 100%;
   width: 100%;
-  z-index: 9999;
+  z-index: 200;
 }
 
 .scroll-warpper {
