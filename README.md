@@ -142,6 +142,22 @@
     Will be released in 2025.
 </p>
 
-<p align="center" style="font-size: 10px; color: #e5e5e550">
-    Copyrgiht © 2023 Shanghai MeseOTech Co Ltd., All rights reversed.
+#### Project Depends
+[Naive UI](https://www.naiveui.com/)
+[Swiper](https://swiper.com.cn/)
+
+#### Special Thanks
+[GashByte](https://github.com/gashbyte) Founder of MeseOTech Co. Ltd. and Sunstrider Project
+
+[ZouCe](https://github.com/zou-ce) Bugs Finder. During the limit-testing, he raised 75% of bugs
+
+Zone Su Yuni(no-github) Economic pillars during the internal testing period
+
+[MeseOTech Developers](https://www.meseotech.org/dev/sunstrider) && [MeseOTech Public Team Developers](https://www.meseotech.org/public-team/dev/sunstrider)
+
+<br/>
+
+
+<p align="center">
+    Copyrgiht © 2023 Shanghai MeseOTech Co Ltd., and all contributors , All rights reversed.
 </p>
