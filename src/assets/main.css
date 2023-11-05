@@ -10,7 +10,7 @@
   --sponsor-card-color: #ff3ba3;
   --before-use-riseup-block-color: #ffb6c1;
   --before-use-falldown-block-color: #3f51b5;
-  --before-use-index-background-block-color: #FFD200;
+  --before-use-index-background-block-color: #ffd200;
   --index-view-card-anchor-background: #000;
   --index-view-card-anchor-color: #fff;
 }
@@ -25,7 +25,7 @@ html[data-theme="Dark"] {
   --sponsor-card-color: #ff3ba3;
   --before-use-riseup-block-color: #283593;
   --before-use-falldown-block-color: #4a148c;
-  --before-use-index-background-block-color: #FFD250;
+  --before-use-index-background-block-color: #ffd250;
   --index-view-card-anchor-background: #ffffff;
   --index-view-card-anchor-color: #000;
 }

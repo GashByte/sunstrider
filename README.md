@@ -143,8 +143,9 @@
 </p>
 
 #### Project Depends
-[Naive UI](https://www.naiveui.com/)
-[Swiper](https://swiper.com.cn/)
+[Naive UI](https://www.naiveui.com/) |
+[Swiper](https://swiper.com.cn/) |
+[XIcons](https://www.xicons.org/)
 
 #### Special Thanks
 [GashByte](https://github.com/gashbyte) Founder of MeseOTech Co. Ltd. and Sunstrider Project

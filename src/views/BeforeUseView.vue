@@ -3,9 +3,17 @@ import BeforeUseHeader from "@/components/header/BeforeUseHeader.vue";
 
 import IndexView from "./beforeUsePage/IndexView.vue";
 import GetStartedView from "./beforeUsePage/GetStartedView.vue";
-import FutureView from "./beforeUsePage/FutureView.vue";
+import FeaturesView from "./beforeUsePage/FeaturesView.vue";
 import AchievementView from "./beforeUsePage/AchievementView.vue";
 import MeetTeamView from "./beforeUsePage/MeetTeamView.vue";
+
+const PagesList = [
+  IndexView,
+  FeaturesView,
+  MeetTeamView,
+  AchievementView,
+  GetStartedView,
+];
 
 import { ref } from "vue";
 
@@ -17,7 +25,7 @@ export default {
     BeforeUseHeader,
     IndexView,
     GetStartedView,
-    FutureView,
+    FeaturesView,
     AchievementView,
     MeetTeamView,
   },
@@ -50,18 +58,33 @@ export default {
       warpperList[1].classList.add("scroll-next");
       page.value = 0;
 
+      /*
       canScrollNext.value = false;
       setTimeout(() => {
         scrollWarpper.removeChild(document.querySelector('.full-screen-tip') as Node);
         
         canScrollNext.value = true;
       }, 3500);
+      */
+
+      window.onresize = (e: any) => {
+        scrollWarpper.style.height = `${window.innerHeight}px`;
+        warpperList.forEach((item) => {
+          item.style.height = `${window.innerHeight}px`;
+        });
+      };
     });
 
     document.addEventListener("wheel", (event: any) => {
       if (event.deltaY > 0) {
-        if (page.value === warpperList.length - 1) return;
         if (!canScrollNext.value) return;
+        if (page.value + 1 >= warpperList.length) {
+          // release the scroll event
+          scrollWarpper.style.transform = `translateY(-${
+            page.value * window.innerHeight + event.deltaY
+          }px)`;
+          return;
+        }
 
         canScrollNext.value = false;
 
@@ -91,8 +114,9 @@ export default {
         afterScrollChanged();
 
         setTimeout(() => {
-          scrollWarpper.style.transform = `translateY(-${page.value * window.innerHeight
-            }px)`;
+          scrollWarpper.style.transform = `translateY(-${
+            page.value * window.innerHeight
+          }px)`;
         }, 600);
       } else if (event.deltaY < 0) {
         if (page.value === 0) return;
@@ -126,10 +150,14 @@ export default {
         afterScrollChanged();
 
         setTimeout(() => {
-          scrollWarpper.style.transform = `translateY(-${page.value * window.innerHeight
-            }px)`;
+          scrollWarpper.style.transform = `translateY(-${
+            page.value * window.innerHeight
+          }px)`;
         }, 1000);
       }
+
+      // call page active function
+      // console.log(page.value, PagesList[page.value]);
 
       setTimeout(() => {
         canScrollNext.value = true;
@@ -160,22 +188,19 @@ export default {
       setTimeout(() => {
         for (let i = 0; i < all_blocks.length; i++) {
           setTimeout(() => {
-            all_blocks[i].style.transform = `translateY(${all_blocks[i].classList.contains("riseup-block")
-              ? "100%"
-              : "-100%"
-              })`;
+            all_blocks[i].style.transform = `translateY(${
+              all_blocks[i].classList.contains("riseup-block")
+                ? "100%"
+                : "-100%"
+            })`;
 
             // split little blocks
-            if (all_blocks[i].classList.contains('riseup-block')) {
-
+            if (all_blocks[i].classList.contains("riseup-block")) {
             }
           }, i * 200);
         }
       }, 1000);
     }
-  },
-  method: {
-    abbbb(e: any) { },
   },
 };
 </script>
@@ -201,42 +226,12 @@ export default {
         </div>
         <div class="before-use-page">
           <div class="scroll-warpper">
-            <div class="full-screen-tip">
-              <svg class="arrow-top-left" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358" fill="none"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs />
-                <path id="arrow"
-                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
-                  fill-rule="evenodd" fill="#000000" />
-              </svg>
-              <svg class="arrow-top-right" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358"
-                fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs />
-                <path id="arrow"
-                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
-                  fill-rule="evenodd" fill="#000000" />
-              </svg>
-              <svg class="arrow-bottom-left" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358"
-                fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs />
-                <path id="arrow"
-                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
-                  fill-rule="evenodd" fill="#000000" />
-              </svg>
-              <svg class="arrow-bottom-right" width="202.358139" height="202.358215" viewBox="0 0 202.358 202.358"
-                fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs />
-                <path id="arrow"
-                  d="M0 184.681L181.019 3.66113L198.697 21.3389L17.6777 202.358L0 184.681ZM177.358 25L89.8581 25C82.8581 25 77.3581 19.5 77.3581 12.5C77.3581 5.5 82.8581 0 89.8581 0L189.858 0C196.858 0 202.358 5.5 202.358 12.5L202.358 112.5C202.358 119.5 196.858 125 189.858 125C182.858 125 177.358 119.5 177.358 112.5L177.358 25Z"
-                  fill-rule="evenodd" fill="#000000" />
-              </svg>
-              <h1>全屏观看, 享受更好的体验</h1>
-            </div>
             <IndexView class="scroll-item" id="Index-View" />
-            <FutureView class="scroll-item" id="Future-View" />
+            <FeaturesView class="scroll-item" id="Features-View" />
             <MeetTeamView class="scroll-item" id="MeetTeam-View" />
             <AchievementView class="scroll-item" id="Achievement-View" />
             <GetStartedView class="scroll-item" id="GetStarted-View" />
+            <div class="footer"></div>
           </div>
         </div>
       </main>
@@ -245,63 +240,10 @@ export default {
 </template>
 
 <style scoped>
-.full-screen-tip {
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 9999;
+.footer {
+  height: 900px;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  animation: fadeOut 3s ease-in-out 0s 1 normal forwards;
-}
-
-.full-screen-tip h1 {
-  font-size: 5.5vh;
-  color: #e5e5e5A0;
-}
-
-.arrow-top-right {
-  position: absolute;
-  right: 125px;
-  top: 125px;
-}
-
-.arrow-bottom-left {
-  position: absolute;
-  transform: rotate(-180deg);
-  bottom: 125px;
-  left: 125px;
-}
-
-.arrow-top-left {
-  position: absolute;
-  transform: rotate(-90deg);
-  top: 125px;
-  left: 125px;
-}
-
-.arrow-bottom-right {
-  position: absolute;
-  transform: rotate(90deg);
-  bottom: 125px;
-  right: 125px;
-}
-
-@keyframes fadeOut {
-  15%{
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
+  background: #000;
 }
 
 .falldown-block {
@@ -332,6 +274,10 @@ export default {
   width: 100%;
   height: 100%;
   transition: 0.55s;
+}
+
+.before-use-view {
+  overflow: hidden !important;
 }
 
 .before-use-content-container .before-use-page .before-use-view {
